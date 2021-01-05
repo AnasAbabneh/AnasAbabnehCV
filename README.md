@@ -1,7 +1,7 @@
 # Repository Design Patterns
 -RepositoryDataAccess => [Entity , Context , Migration , DTO]
 
-public interface IGeneric<T> where T : class
+        public interface IGeneric<T> where T : class
     {
         void insart(T obj);
         void Update(T obj);
@@ -10,7 +10,7 @@ public interface IGeneric<T> where T : class
         List<T> LoadAll();
 
     }
- public class Generic<T> : IGeneric<T> where T : class
+         public class Generic<T> : IGeneric<T> where T : class
     {
         readonly Context.Context db = new Context.Context();
 
@@ -44,7 +44,7 @@ public interface IGeneric<T> where T : class
 ------------------------------------------
 -RepositoryyBusinessLogic [ RepositoryClass, RepositoryInterface ]
 
-public interface IXRepository
+        public interface IXRepository
     {
         void Insert(X obj);
         void Update(X obj);
@@ -91,7 +91,7 @@ public interface IXRepository
 
     }
 
-+  List<VMX> IXRepository.LoadVMx()
+        +  List<VMX> IXRepository.LoadVMx()
         {
             XXContext context = new XXContext();
              var x = context.XEntity.GroupJoin(
@@ -100,7 +100,7 @@ public interface IXRepository
                          V => V.Attributes_ID,
                         (X, Y) => new { X.ID, X.Name , X.Status , count= Y.Count() });
  
- List<VMX> li = new List<VMX>();
+         List<VMX> li = new List<VMX>();
            
             foreach (var item in x)
             {
@@ -116,7 +116,7 @@ public interface IXRepository
 
             return li;
      }
-+ public User MainAdmin()
+        + public User MainAdmin()
         {
             MessagingSystemContext db = new MessagingSystemContext();
 
@@ -128,7 +128,8 @@ public interface IXRepository
   -----------------------------------
   
   -WebApi [ controller ]
-  public class UserController : ApiController
+         
+         public class UserController : ApiController
     {
 
         //Post User
@@ -195,16 +196,16 @@ Image
         }
 Cross  
 
- Install-Package Microsoft.AspNet.WebApi.Cors
- using System.Web.Http;
- using System.Web.Http.Cors;
- EnableCorsAttribute cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
- config.EnableCors(cors);
+         Install-Package Microsoft.AspNet.WebApi.Cors
+         using System.Web.Http;
+         using System.Web.Http.Cors;
+         EnableCorsAttribute cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+         config.EnableCors(cors);
 ------------------------------------------------
 
 MVC [ ajax , html , jq , js] 
 
-  //////save data
+          //////save data
                     $("#SaveChange").click(function () {
                         //debugger;
                         var nameprand = $('#txtprandname').val();
@@ -393,7 +394,7 @@ MVC [ ajax , html , jq , js]
             //end function
         }
 
-file upload
+        //file upload
 
             $("#fileupload").change(function () {
                 debugger;
@@ -419,9 +420,9 @@ file upload
 
                 });
                 
-read image
- <td> <img id='image' style='width:50px; height:50px;' src='" + value.ImagURL +"' />   </td>
-Strongly Query
+        //read image
+         <td> <img id='image' style='width:50px; height:50px;' src='" + value.ImagURL +"' />   </td>
+        //Strongly Query
                 window.location = '@Url.Action("Edit/id", "Order")'.replace("id",id);
 
 
@@ -442,24 +443,24 @@ npm install --save bootstrap@3
 
 Route 
 
-import { RouterModule, Routes } from '@angular/router';
+        import { RouterModule, Routes } from '@angular/router';
 
 
-const MyAppRoute:Routes=[
-  {path:'X',component:XComponant},
-  {path:'X1',component:X1cpmponant},
+        const MyAppRoute:Routes=[
+          {path:'X',component:XComponant},
+          {path:'X1',component:X1cpmponant},
   
 
-];
+        ];
 
-imports: [
+        imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(MyAppRoute)
-  ],
+          ],
  
- providers: [httpService,X,X1,X2],
+         providers: [httpService,X,X1,X2],
   
   
     <li><a routerLink='Category'> Category </a></li>
@@ -471,26 +472,26 @@ imports: [
 --------------------------------------------
 Class [ All , HttpServer , DTO ]
 
-export class X
-{
-     ID : number;
+        export class X
+        {
+             ID : number;
      Name : string;
      Status : string;
 
-}
+        }
 
-import {  } from "../";
+        import {  } from "../";
 
-export class VMA{
+        export class VMA{
      count:number;
      listattr:;
 }
 
 
-import { HttpClient } from '@angular/common/http';
-import {Injectable} from '@angular/core'
-import { Observable } from 'rxjs';
-import { X } from './X';
+        import { HttpClient } from '@angular/common/http';
+        import {Injectable} from '@angular/core'
+        import { Observable } from 'rxjs';
+        import { X } from './X';
 
      @Injectable()
 
@@ -527,10 +528,11 @@ import { X } from './X';
 TS + Html
 
 1-show hid dropdown List
-pop:boolean=true;
-MenueValue:any={  product:false,  order:false,}
-togg(name:string){this.MenueValue[name] =!this.MenueValue[name];  }
-sidebar(){this.pop =!this.pop;}
+
+        pop:boolean=true;
+        MenueValue:any={  product:false,  order:false,}
+        togg(name:string){this.MenueValue[name] =!this.MenueValue[name];  }
+        sidebar(){this.pop =!this.pop;}
           
           <li>
                         <a class="dropdown-toggle" (click)='togg("product");'  data-toggle="collapse"><i class="glyphicon glyphicon-triangle-bottom"></i> Products</a>
@@ -545,7 +547,7 @@ sidebar(){this.pop =!this.pop;}
                   
 2- branx
 
-x.ts
+        x.ts
 
                 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
                 import { NgForm } from '@angular/forms';
@@ -800,10 +802,10 @@ x.ts
             </table>
         </div>
     </div>
-</div>
+        </div>
 
    <!-- Select prodact -->
-        <div class="col-lg-5 col-xs-12">
+                <div class="col-lg-5 col-xs-12">
 
 
             <label for="ddlproductSelect" id="ddlproductSelect">product</label>
